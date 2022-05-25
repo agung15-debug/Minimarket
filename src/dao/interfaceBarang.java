@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package dao;
 
-/**
- *
- * @author ACER
- */
+import model.Barang;
+import java.util.List;
+
 public interface interfaceBarang {
-    
+    public void insert(Barang barang);
+    public void update(Barang barang);
+    public void delete(int id);
+    public List<Barang> getData();
 }

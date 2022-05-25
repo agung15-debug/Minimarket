@@ -2,7 +2,7 @@ package controller;
 import java.sql.*;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
-public class Connector {
+public class ConnectorMinimarket {
     static Connection con;
     public static Connection connection(){
             MysqlDataSource data = new MysqlDataSource();
