@@ -1,6 +1,6 @@
 package minimarket;
 
-import view.viewKategori;
+import view.viewLogin;
 
 public class Minimarket {
 
@@ -8,7 +8,7 @@ public class Minimarket {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new viewKategori().setVisible(true);
+        new viewLogin().setVisible(true);
     }
     
 }

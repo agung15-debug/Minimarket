@@ -6,6 +6,7 @@ import dao.daoKategori;
 import dao.interfaceKategori;
 import model.Kategori;
 import model.tableModelKategori;
+import view.adminUtama;
 import view.viewKategori;
 import view.tambahKategori;
 import view.detailKategori;
@@ -32,5 +33,9 @@ public class ControllerKategori {
         Kategori kategori = list_kategori.get(row);
         frame.dispose();
         new detailKategori(kategori).setVisible(true);
+    }
+    public void halamanAdmin(){
+        frame.dispose();
+        new adminUtama().setVisible(true);
     }
 }

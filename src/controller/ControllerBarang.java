@@ -9,6 +9,7 @@ import model.tableModelBarang;
 import view.viewBarang;
 //import view.tambahBarang;
 import view.detailBarang;
+import view.adminUtama;
 
 public class ControllerBarang {
     viewBarang frame;
@@ -32,5 +33,9 @@ public class ControllerBarang {
         Barang barang = list_barang.get(row);
         frame.dispose();
         new detailBarang(barang).setVisible(true);
+    }
+    public void halamanAdmin(){
+        frame.dispose();
+        new adminUtama().setVisible(true);
     }
 } 
