@@ -18,6 +18,7 @@ public class detailBarang extends javax.swing.JFrame {
     }
     public detailBarang(Barang arg) {
         initComponents();
+        this.setLocationRelativeTo(null);
         barang = arg;
         cDetail = new ControllerDetailBarang(this);
         cDetail.tampilkanData(barang);

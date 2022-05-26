@@ -16,6 +16,7 @@ public class detailKategori extends javax.swing.JFrame {
     public detailKategori(Kategori arg) {
         initComponents();
         kategori = arg;
+        this.setLocationRelativeTo(null);
         cDetail = new ControllerDetailKategori(this);
         cDetail.tampilkanData(kategori);
     }

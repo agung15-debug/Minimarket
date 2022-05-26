@@ -1,13 +1,13 @@
 package dao;
 
 import controller.ConnectorMinimarket;
-import model.kelolaUser;
+import model.Pegawai;
 import java.sql.*;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class daoKelolaUser implements interfaceKelolaUser{
+public class daoPegawai implements interfacePegawai{
     Connection connection;
     final String insert = "INSERT INTO `pegawai` (`username`, `password`, `nama_pegawai`, `no_hp`, `alamat`, `role`) VALUES (?, ?, ?, ?,?, ?); ";
     final String update = "UPDATE `pegawai` SET `username`=?,`password`=?,`nama_pegawai`=?,`no_hp`=?,`alamat`=?,`role`=? WHERE id_pegawai= ?;";
@@ -15,12 +15,12 @@ public class daoKelolaUser implements interfaceKelolaUser{
     final String selectUser = "SELECT * FROM `pegawai` WHERE username=?;";
     final String select = "SELECT * FROM `pegawai` ORDER BY username ASC;";
 
-    public daoKelolaUser() {
+    public daoPegawai() {
         connection = ConnectorMinimarket.connection();
     }
   
     @Override
-    public void insert(kelolaUser kUser) {
+    public void insert(Pegawai kUser) {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(insert);
@@ -43,7 +43,7 @@ public class daoKelolaUser implements interfaceKelolaUser{
     }
 
     @Override
-    public void update(kelolaUser kUser) {
+    public void update(Pegawai kUser) {
        PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(update);
@@ -86,9 +86,9 @@ public class daoKelolaUser implements interfaceKelolaUser{
     }
 
     @Override
-    public kelolaUser loadUser(String username) {
+    public Pegawai loadUser(String username) {
         PreparedStatement statement = null;
-        kelolaUser kUser = new kelolaUser();
+        Pegawai kUser = new Pegawai();
         try {
              statement = connection.prepareStatement(selectUser);
              statement.setString(1, username);
@@ -116,25 +116,25 @@ public class daoKelolaUser implements interfaceKelolaUser{
     }
 
     @Override
-    public List<kelolaUser> getData() {
-        List<kelolaUser> listUser = null;
+    public List<Pegawai> getData() {
+        List<Pegawai> listUser = null;
         try {
-            listUser = new ArrayList<kelolaUser>();
+            listUser = new ArrayList<Pegawai>();
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(select);
             while (rs.next()) {
-                kelolaUser kUser = new kelolaUser();
+                Pegawai kUser = new Pegawai();
                 kUser.setId(rs.getInt("id_pegawai"));
                 kUser.setUsername(rs.getString("username"));
                 kUser.setPassword(rs.getString("password"));
                 kUser.setNamaPegawai(rs.getString("nama_pegawai"));
                 kUser.setNoHp(rs.getString("no_hp"));
                 kUser.setAlamat(rs.getString("alamat"));
-                kUser.setPrivilage(rs.getInt("role"));
+                kUser.setnPrivilage(rs.getInt("role"));
                 listUser.add(kUser);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(daoKelolaUser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(daoPegawai.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return listUser;

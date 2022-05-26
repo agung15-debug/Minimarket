@@ -4,7 +4,7 @@ import view.adminUtama;
 import view.viewBarang;
 import view.viewKategori;
 import view.viewLogin;
-//import view.viewKelolaUser;
+import view.viewPegawai;
 
 public class ControllerAdminUtama {
     adminUtama frame;
@@ -19,6 +19,10 @@ public class ControllerAdminUtama {
     public void halamanKelolaKategori(){
         frame.dispose();
         new viewKategori().setVisible(true);
+    }
+    public void halamanKelolaPegawai(){
+        frame.dispose();
+        new viewPegawai().setVisible(true);
     }
     public void halamanLogin(){
         frame.dispose();

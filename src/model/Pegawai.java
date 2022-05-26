@@ -1,6 +1,6 @@
 package model;
 
-public class kelolaUser {
+public class Pegawai {
     private String username = "";
     private String password = "";
     private String namaPegawai;

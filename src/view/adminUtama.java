@@ -9,6 +9,7 @@ public class adminUtama extends javax.swing.JFrame {
      */
     public adminUtama() {
         initComponents();
+        this.setLocationRelativeTo(null);
         cAdmin = new ControllerAdminUtama(this);
     }
 
@@ -47,6 +48,11 @@ public class adminUtama extends javax.swing.JFrame {
         });
 
         btnKelolaPengguna.setText("Kelola Pengguna");
+        btnKelolaPengguna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKelolaPenggunaActionPerformed(evt);
+            }
+        });
 
         btnLogout.setForeground(new java.awt.Color(255, 0, 0));
         btnLogout.setText("Logout");
@@ -104,6 +110,10 @@ public class adminUtama extends javax.swing.JFrame {
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         cAdmin.halamanLogin();
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnKelolaPenggunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKelolaPenggunaActionPerformed
+       cAdmin.halamanKelolaPegawai();
+    }//GEN-LAST:event_btnKelolaPenggunaActionPerformed
 
     /**
      * @param args the command line arguments

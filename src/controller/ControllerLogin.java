@@ -1,21 +1,21 @@
 package controller;
 
-import dao.daoKelolaUser;
-import dao.interfaceKelolaUser;
+import dao.daoPegawai;
 import javax.swing.JOptionPane;
-import model.kelolaUser;
+import model.Pegawai;
 import view.viewLogin;
 import view.adminUtama;
+import dao.interfacePegawai;
 //letakkan view user disini
 
 public class ControllerLogin {
     viewLogin frame;
-    kelolaUser kUser;
-    interfaceKelolaUser infcKeUser;
+    Pegawai kUser;
+    interfacePegawai infcKeUser;
 
     public ControllerLogin(viewLogin frame) {
         this.frame = frame;
-        infcKeUser = new daoKelolaUser();
+        infcKeUser = new daoPegawai();
     }
     
     public boolean checkLogin(String username, String password){

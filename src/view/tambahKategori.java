@@ -11,6 +11,7 @@ public class tambahKategori extends javax.swing.JFrame {
     
     public tambahKategori() {
         initComponents();
+        this.setLocationRelativeTo(null);
         cKategori = new ControllerTambahKategori(this);
     }
     

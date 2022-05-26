@@ -20,6 +20,7 @@ public class editKategori extends javax.swing.JFrame {
     public editKategori(Kategori arg){
         initComponents();
         kategori = arg;
+        this.setLocationRelativeTo(null);
         cEdit = new ControllerEditKategori(this);
         cEdit.tampilkanData(kategori);
        

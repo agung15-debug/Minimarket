@@ -9,6 +9,7 @@ public class viewKategori extends javax.swing.JFrame {
   
     public viewKategori() {
         initComponents();
+        this.setLocationRelativeTo(null);
         cKategori = new ControllerKategori(this);
         cKategori.loadTable();
     }
