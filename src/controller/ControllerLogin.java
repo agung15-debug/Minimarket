@@ -1,21 +1,21 @@
 package controller;
 
-import dao.daoPegawai;
+import dao.daoKelolaUser;
+import dao.interfaceKelolaUser;
 import javax.swing.JOptionPane;
-import model.Pegawai;
+import model.kelolaUser;
 import view.viewLogin;
 import view.adminUtama;
-import dao.interfacePegawai;
-//letakkan view user disini
+import view.kasirUtama;
 
 public class ControllerLogin {
     viewLogin frame;
-    Pegawai kUser;
-    interfacePegawai infcKeUser;
+    kelolaUser kUser;
+    interfaceKelolaUser infcKeUser;
 
     public ControllerLogin(viewLogin frame) {
         this.frame = frame;
-        infcKeUser = new daoPegawai();
+        infcKeUser = new daoKelolaUser();
     }
     
     public boolean checkLogin(String username, String password){
@@ -42,7 +42,8 @@ public class ControllerLogin {
                 frame.dispose();
                 new adminUtama().setVisible(true);
             }else{
-                //letakkan halaman user disini
+                frame.dispose();
+                new kasirUtama().setVisible(true);
             }
         }
     }
