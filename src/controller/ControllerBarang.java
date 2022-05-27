@@ -7,7 +7,7 @@ import dao.interfaceBarang;
 import model.Barang;
 import model.tableModelBarang;
 import view.viewBarang;
-//import view.tambahBarang;
+import view.tambahBarang;
 import view.detailBarang;
 import view.adminUtama;
 
@@ -25,10 +25,10 @@ public class ControllerBarang {
        tableModelBarang tmb = new tableModelBarang(list_barang);
        frame.getTableBarang().setModel(tmb);
     }
-//    public void halamanTambah(){
-//        frame.dispose();
-//        new tambahBarang().setVisible(true);
-//    }
+    public void halamanTambah(){
+        frame.dispose();
+        new tambahBarang().setVisible(true);
+    }
     public void halamanDetail(int row){
         Barang barang = list_barang.get(row);
         frame.dispose();

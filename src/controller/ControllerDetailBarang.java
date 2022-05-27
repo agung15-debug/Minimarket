@@ -5,7 +5,7 @@ import dao.interfaceBarang;
 import model.Barang;
 import view.detailBarang;
 import view.viewBarang;
-//import view.editBarang;
+import view.editBarang;
 
 public class ControllerDetailBarang {
     detailBarang frame;
@@ -27,10 +27,10 @@ public class ControllerDetailBarang {
         frame.dispose();
         new viewBarang().setVisible(true);
     }
-//    public void halamanEdit(Barang barang){
-//        frame.dispose();
-//        new editBarang(barang).setVisible(true);
-//    }
+    public void halamanEdit(Barang barang){
+        frame.dispose();
+        new editBarang(barang).setVisible(true);
+    }
     public void hapusData(int idBarang){
         infcBarang.delete(idBarang);
         kembali();

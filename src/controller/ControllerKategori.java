@@ -8,11 +8,13 @@ import model.Kategori;
 import model.tableModelKategori;
 import view.adminUtama;
 import view.viewKategori;
+import view.lihatKategoriBarang;
 import view.tambahKategori;
 import view.detailKategori;
 
 public class ControllerKategori {
     viewKategori frame;
+    lihatKategoriBarang frame2;
     interfaceKategori infcKategori;
     List<Kategori> list_kategori;
 
@@ -21,9 +23,20 @@ public class ControllerKategori {
         infcKategori = new daoKategori();
         list_kategori = infcKategori.getData();
     }
+
+    public ControllerKategori(lihatKategoriBarang frame2) {
+        this.frame2 = frame2;
+        infcKategori = new daoKategori();
+        list_kategori = infcKategori.getData();
+    }
+    
     public void loadTable(){
         tableModelKategori tmk = new tableModelKategori(list_kategori);
-        frame.getTableKategori().setModel(tmk);
+            frame.getTableKategori().setModel(tmk);
+    }
+    public void loadTableKategoriBarang(){
+        tableModelKategori tmk = new tableModelKategori(list_kategori);
+         frame2.getTableKategori().setModel(tmk);
     }
     public void halamanTambah(){
         frame.dispose();

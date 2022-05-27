@@ -13,6 +13,7 @@ public class daoBarang implements interfaceBarang{
     final String update = "UPDATE barang SET nama_barang=?, id_kategori=?, deskripsi =?, stok=?, harga=? WHERE id_barang=?;";
     final String delete = "DELETE FROM barang WHERE id_barang = ?;";
     final String select = "SELECT barang.*, kategori.nama_kategori FROM `barang` INNER JOIN kategori ON barang.id_kategori = kategori.id_kategori ORDER BY id_barang DESC";
+    final String loadKategori = "SELECT id_kategori FROM kategori;";
 
     public daoBarang(){
         connection = ConnectorMinimarket.connection();
@@ -24,7 +25,7 @@ public class daoBarang implements interfaceBarang{
             statement.setString(1, barang.getNamaBarang());
             statement.setInt(2, barang.getKategori());
             statement.setString(3, barang.getDeskripsi());
-            statement.setInt(5, barang.getStok());
+            statement.setInt(4, barang.getStok());
             statement.setInt(5, barang.getHarga());
             statement.executeUpdate();
         }
@@ -49,7 +50,7 @@ public class daoBarang implements interfaceBarang{
             statement.setString(1, barang.getNamaBarang());
             statement.setInt(2, barang.getKategori());
             statement.setString(3, barang.getDeskripsi());
-            statement.setInt(5, barang.getStok());
+            statement.setInt(4, barang.getStok());
             statement.setInt(5, barang.getHarga());
             statement.setInt(6, barang.getId());
             statement.executeUpdate();
@@ -106,5 +107,23 @@ public class daoBarang implements interfaceBarang{
             Logger.getLogger(daoBarang.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listBarang;
+    }
+    
+    @Override
+    public ArrayList<String> getKategori(){
+        ArrayList<String> listKategori =null;
+        try{
+            listKategori = new ArrayList<>();
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(loadKategori);
+            while(rs.next()){
+                String id = rs.getString("id_kategori");
+                listKategori.add(id);
+            }
+        }
+        catch (SQLException ex){
+            Logger.getLogger(daoKategori.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listKategori;
     }
 }

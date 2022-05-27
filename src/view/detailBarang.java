@@ -105,6 +105,11 @@ public class detailBarang extends javax.swing.JFrame {
         });
 
         jButton3.setText("Edit");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         tId.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tId.setText("...");
@@ -207,6 +212,10 @@ public class detailBarang extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         cDetail.hapusData(barang.getId());
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        cDetail.halamanEdit(barang);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

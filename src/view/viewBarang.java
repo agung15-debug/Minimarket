@@ -55,6 +55,11 @@ public class viewBarang extends javax.swing.JFrame {
         lDaftarBarang.setText("Daftar Barang");
 
         jButton1.setText("+ Tambah");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btnKembali.setText("Kembali");
         btnKembali.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +108,10 @@ public class viewBarang extends javax.swing.JFrame {
     private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
         cBarang.halamanAdmin();
     }//GEN-LAST:event_btnKembaliActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        cBarang.halamanTambah();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
