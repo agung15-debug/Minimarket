@@ -5,31 +5,53 @@
 package controller;
 
 import javax.swing.JOptionPane;
+import java.util.List;
 import dao.daoOrder;
 import dao.interfaceOrder;
 import model.Order;
 import model.Pegawai;
+import model.tableModelOrder;
 import view.kasirUtama;
+import view.viewOrder;
+import view.detailListOrder;
 
 public class ControllerOrder {
-    kasirUtama frame;
+    viewOrder frame;
     interfaceOrder infcOrder;
-
-    public ControllerOrder(kasirUtama frame) {
+    Pegawai pegawai;
+    int id;
+    List<Order> list_order;
+    
+    public ControllerOrder(viewOrder frame) {
         this.frame = frame;
         infcOrder = new daoOrder();
+        list_order = infcOrder.getData();
     }
     
-    public void Order(Pegawai pegawai){
+    public void Order(Pegawai arg){
         Order order = new Order();
-        order.setIdPegawai(pegawai.getId());
+        pegawai = arg;
+        order.setIdPegawai(frame.getId());
         infcOrder.insert(order);
         JOptionPane.showMessageDialog(frame, "Berhasil membuat pesanan baru");
-        kembali();
+        restart(pegawai);
+    }
+    public void loadTable(){
+        tableModelOrder tmo = new tableModelOrder(list_order);
+        frame.getOrder().setModel(tmo);
     }
     
-    public void kembali(){
+    public void restart(Pegawai pegawai){
+        frame.dispose();
+        new viewOrder(pegawai).setVisible(true);
+    }
+    public void kembali(Pegawai pegawai){
          frame.dispose();
-        new kasirUtama().setVisible(true);
+        new kasirUtama(pegawai).setVisible(true);
+    }
+    public void halamanDetail(int row, Pegawai pegawai){
+        Order order = list_order.get(row);
+        frame.dispose();
+        new detailListOrder(order, pegawai).setVisible(true);
     }
 }
