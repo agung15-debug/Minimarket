@@ -16,23 +16,23 @@ public class daoOrderDetail implements interfaceOrderDetail{
     final String insert = "INSERT INTO `order_detail` (id_order, id_barang, jumlah, total) VALUES (?,?,?,?);";
     final String update = "UPDATE order_detail SET jumlah=?, total=? WHERE id_detail=?;";
     final String delete = "DELETE FROM order_detail WHERE id_detail = ?;";
-    final String select = "SELECT order_detail.*, barang.nama_barang, `order`.id_pegawai, pegawai.nama_pegawai FROM order_detail INNER JOIN `order` ON order_detail.id_order = `order`.`id_order` INNER JOIN barang ON order_detail.id_barang = barang.id_barang INNER JOIN pegawai ON `order`.`id_pegawai` = pegawai.id_pegawai ORDER BY id_detail ASC;";
-   // final String select = "SELECT * FROM order_detail";
+    final String select = "SELECT order_detail.*, barang.nama_barang, `order`.id_pegawai, pegawai.nama_pegawai, kategori.nama_kategori FROM order_detail INNER JOIN `order` ON order_detail.id_order = `order`.`id_order` INNER JOIN barang ON order_detail.id_barang = barang.id_barang INNER JOIN pegawai ON `order`.`id_pegawai` = pegawai.id_pegawai INNER JOIN kategori ON barang.id_kategori = kategori.id_kategori ORDER BY id_detail ASC;";
+    final String dataIdOrder = "SELECT id_order FROM `order`;";
+    final String dataIdBarang = "SELECT id_barang FROM barang;";
     
     public daoOrderDetail() {
         this.connection = ConnectorMinimarket.connection();
     }
 
     @Override
-    public void insert(OrderDetail orderdetail) {
+    public void insert(String id_order, String id_barang, int jumlah, int total) {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(insert);
-        //    statement.setInt(1, orderdetail.getIdDetail());
-            statement.setInt(1, orderdetail.getIdOrder());
-            statement.setInt(2, orderdetail.getIdBarang());
-            statement.setInt(3, orderdetail.getJumlah());
-            statement.setInt(4, orderdetail.getTotal());
+            statement.setString(1, id_order);
+            statement.setString(2, id_barang);
+            statement.setInt(3, jumlah);
+            statement.setInt(4, total);
             statement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -50,7 +50,6 @@ public class daoOrderDetail implements interfaceOrderDetail{
          PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(update);
-        //    statement.setInt(1, orderdetail.getIdDetail());
             statement.setInt(1, orderdetail.getIdOrder());
             statement.setInt(2, orderdetail.getIdBarang());
             statement.setInt(3, orderdetail.getJumlah());
@@ -104,6 +103,7 @@ public class daoOrderDetail implements interfaceOrderDetail{
                 orderDetail.setNamaBarang(rs.getString("nama_barang"));
                 orderDetail.setIdPegawai(rs.getInt("id_pegawai"));
                 orderDetail.setNamaPegawai(rs.getString("nama_pegawai"));
+                orderDetail.setNamaKategori(rs.getString("nama_kategori"));
                 listOrderDetail.add(orderDetail);
             }
         } catch (SQLException ex) {
@@ -111,5 +111,41 @@ public class daoOrderDetail implements interfaceOrderDetail{
         }
 
         return listOrderDetail;
+    }
+
+    @Override
+    public ArrayList<String> getIdOrder() {
+        ArrayList<String> listIdOrder=null;
+        try{
+            listIdOrder = new ArrayList<>();
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(dataIdOrder);
+            while(rs.next()){
+                String id = rs.getString("id_order");
+                listIdOrder.add(id);
+            }
+        }
+        catch (SQLException ex){
+            Logger.getLogger(daoOrderDetail.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listIdOrder;
+    }
+
+    @Override
+    public ArrayList<String> getIdBarang() {
+        ArrayList<String> listIdBarang =null;
+        try{
+            listIdBarang = new ArrayList<>();
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(dataIdBarang);
+            while(rs.next()){
+                String id = rs.getString("id_barang");
+                listIdBarang.add(id);
+            }
+        }
+        catch (SQLException ex){
+            Logger.getLogger(daoOrderDetail.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listIdBarang;
     }
 }
