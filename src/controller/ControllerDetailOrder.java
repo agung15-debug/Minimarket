@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 
 import dao.daoOrderDetail;
@@ -13,6 +9,7 @@ import model.tableModelOrderDetail;
 import view.detailDataOrder;
 import view.viewOrderDetail;
 import view.kasirUtama;
+import view.tambahOrder;
 
 public class ControllerDetailOrder {
 
@@ -42,5 +39,10 @@ public class ControllerDetailOrder {
         pegawai = args;
         frame.dispose();
         new detailDataOrder(oDetail, pegawai).setVisible(true);
+    }
+    
+    public void halamanTambah(Pegawai pegawai){
+        frame.dispose();
+        new tambahOrder(pegawai).setVisible(true);
     }
 }
