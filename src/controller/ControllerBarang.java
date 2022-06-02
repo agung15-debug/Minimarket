@@ -10,9 +10,11 @@ import view.viewBarang;
 import view.tambahBarang;
 import view.detailBarang;
 import view.adminUtama;
+import view.lihatBarang;
 
 public class ControllerBarang {
     viewBarang frame;
+    lihatBarang frame2;
     interfaceBarang infcBarang;
     List<Barang> list_barang;
 
@@ -21,9 +23,18 @@ public class ControllerBarang {
         infcBarang = new daoBarang();
         list_barang = infcBarang.getData();
     }
+    public ControllerBarang(lihatBarang frame2) {
+        this.frame2 = frame2;
+        infcBarang = new daoBarang();
+        list_barang = infcBarang.getData();
+    }
     public void loadTable(){
-       tableModelBarang tmb = new tableModelBarang(list_barang);
-       frame.getTableBarang().setModel(tmb);
+        tableModelBarang tmb = new tableModelBarang(list_barang);
+        frame.getTableBarang().setModel(tmb);
+    }
+    public void loadTableBarang(){
+        tableModelBarang tmb = new tableModelBarang(list_barang);
+        frame2.getTableBarang().setModel(tmb);
     }
     public void halamanTambah(){
         frame.dispose();
