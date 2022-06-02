@@ -13,6 +13,7 @@ public class OrderDetail {
     private int idPegawai;
     private String namaPegawai;
     private String namaBarang;
+    private String namaKategori;
 
     public int getIdPegawai() {
         return idPegawai;
@@ -36,6 +37,14 @@ public class OrderDetail {
 
     public void setNamaBarang(String namaBarang) {
         this.namaBarang = namaBarang;
+    }
+    
+    public String getNamaKategori() {
+        return namaKategori;
+    }
+
+    public void setNamaKategori(String namaKategori) {
+        this.namaKategori = namaKategori;
     }
 
     public int getIdDetail() {
