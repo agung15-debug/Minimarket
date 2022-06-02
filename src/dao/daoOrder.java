@@ -6,7 +6,6 @@ package dao;
 
 import controller.ConnectorMinimarket;
 import model.Order;
-import model.Pegawai;
 import java.sql.*;
 import java.util.*;
 import java.util.logging.Level;
@@ -16,19 +15,19 @@ public class daoOrder implements interfaceOrder{
     Connection connection;
     final String insert = "INSERT INTO `order` (id_pegawai) VALUES (?);";
     final String update = "UPDATE order SET id_pegawai=? WHERE id_order=?;";
-    final String delete = "DELETE FROM order WHERE id_order=?;";
-    final String select = "SELECT order.id_pegawai, pegawai.id_pegawai FROM `order` INNER JOIN pegawai ON order.id_pegawai = pegawai.id_pegawai ORDER BY id_order DESC;";
+    final String delete = "DELETE FROM `order` WHERE id_order=?;";
+    final String select = "SELECT * FROM `order` ORDER BY id_order ASC;";
                           
     public daoOrder() {
         connection = ConnectorMinimarket.connection();
     }
 
     @Override
-    public void insert(Pegawai pegawai) {
+    public void insert(Order order) {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(insert);
-            statement.setInt(1, pegawai.getId());
+            statement.setInt(1, order.getIdPegawai());
             statement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -41,6 +40,7 @@ public class daoOrder implements interfaceOrder{
         }
     }
 
+    @Override
     public void update(Order order) {
          PreparedStatement statement = null;
         try {
@@ -98,3 +98,4 @@ public class daoOrder implements interfaceOrder{
         return listOrder;
     }
 }
+
