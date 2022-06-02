@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import model.Pegawai;
 import view.viewLogin;
 import view.adminUtama;
-//import view.kasirUtama;
+import view.kasirUtama;
 
 public class ControllerLogin {
     viewLogin frame;
@@ -43,7 +43,7 @@ public class ControllerLogin {
                 new adminUtama().setVisible(true);
             }else{
                 frame.dispose();
-//                new kasirUtama().setVisible(true);
+                new kasirUtama(pegawai).setVisible(true);
             }
         }
     }
