@@ -1,28 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller;
 
+import dao.interfaceOrder;
+import dao.daoOrder;
 import view.kasirUtama;
 import model.Pegawai;
 import view.viewLogin;
-import view.detailOrder;
+import view.viewOrder;
+import view.viewOrderDetail;
 
 public class ControllerKasirUtama {
     kasirUtama frame;
+    interfaceOrder infcOrder;
     
     public ControllerKasirUtama(kasirUtama frame){
         this.frame = frame;
+        infcOrder = new daoOrder();
     }
     
-    public void getIdPegawai(Pegawai pegawai){
-        frame.getIdPegawai(pegawai.getId());
-    }
-    
-    public void halamanOrderDetail(){
+    public void halamanDetail(Pegawai pegawai){
         frame.dispose();
-        new detailOrder().setVisible(true);
+        new viewOrder(pegawai).setVisible(true);
+    }
+    
+    public void halamanOrderDetail(Pegawai pegawai){
+        frame.dispose();
+        new viewOrderDetail(pegawai).setVisible(true);
     }
     
     public void halamanLogin(){
