@@ -26,7 +26,6 @@ public class ControllerDetailDataOrder {
         frame.setIdDetail(Integer.toString(orderDetail.getIdDetail()));
         frame.setIdOrder(Integer.toString(orderDetail.getIdOrder()));
         frame.setNamaPegawai(orderDetail.getNamaPegawai());
-        frame.setNamaKategori(orderDetail.getNamaKategori());
         frame.setNamaBarang(orderDetail.getNamaBarang());
         frame.setJumlah(orderDetail.getJumlah());
         frame.setTotal(orderDetail.getTotal());
